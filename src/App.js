@@ -9,17 +9,19 @@ function App() {
 
   function chooseItem(id) {
     setProducts(items.map(p => {
-      if(p.id === id)
+      if(p.id === id) {
         p.active = !p.active
         p.hovered = true
+      }
       return p
     }))
   }
 
   function hoverOff(id) {
     setProducts(items.map(p => {
-      if(p.id === id)
+      if(p.id === id) {
         p.hovered = false
+      }
       return p
     }))
   }
