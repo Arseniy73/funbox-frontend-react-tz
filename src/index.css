@@ -1,13 +1,265 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url(./assets/img/Pattern.jpg);
+  background-repeat: repeat;
+  box-sizing: border-box;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+* {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.body-inner {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.list {
+  padding: 25px 80px 65px;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+}
+
+.title {
+  display: block;
+  padding: 20px 80px 0;
+  max-width: 100%;
+  text-align: center;
+  font-family: 'Exo 2', sans-serif;
+  font-size: 36px;
+  font-weight: 300;
+  color: #fff;
+}
+
+.body__item {
+  width: 30%;
+  min-width: 320px;
+  height: 480px;
+  margin-left: 80px;
+}
+
+.body__item:first-child {
+  margin-left: 0;
+}
+
+.body__card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 480px;
+  border: 5px solid #1698d9;
+  border-radius: 3%;
+  background-color: #fff;
+  overflow: hidden;
+  cursor: pointer;
+  transition: border 0.2s linear;
+  /* clip-path: polygon(0% 10%, 0% 100%, 100% 100%, 100% 0, 15% 0%); */
+  clip-path: url(#polygon);
+}
+
+.body__card:before {
+    position: absolute;
+    top: 0;
+    left: 12px;
+    display: inline-block;
+    width: 0px;
+    height: 39px;
+    content: '';
+    border: inherit;
+    transform: skewX(-45deg);
+}
+
+.card--active {
+  border: 5px solid #d91667;
+}
+
+.card--active .card-ellipse {
+  background-color: #d91667;
+}
+
+.card--active .body__card:before {
+  background-color: #d91667;
+}
+
+.card--active:hover .card-question {
+  opacity: 1;
+}
+
+.card--active:hover .card-uptitle {
+  opacity: 0;
+}
+
+.hovered {
+  border: 5px solid #d91667;
+}
+
+.hovered .card-ellipse {
+  background-color: #d91667;
+}
+
+.hovered .body__card:before {
+  background-color: #d91667;
+}
+
+.hovered .card-question {
+  opacity: 0;
+}
+
+.hovered .card-uptitle {
+  opacity: 1;
+}
+
+.card-question {
+  opacity: 0;
+  position: absolute;
+  color: #d91667;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.body__card-inner {
+  display: flex;
+  background-color: #fff;
+  border-radius: 3%;
+  clip-path: url(#polygon)
+}
+
+.card--none .body__card {
+  opacity: 50%;
+  border: 5px solid #b3b3b3;
+  cursor: unset;
+}
+
+.card--none .card-ellipse {
+  background-color: #b3b3b3;
+}
+
+.card-container {
+  padding: 25px 15.6% 34px 15.6%;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.card-uptitle {
+  font-size: 16px;
+  font-weight: 400;
+  color: #666666;
+}
+
+.card-title {
+  margin-top: 17px;
+  font-size: 48px;
+  font-weight: 700;
+  color: #000000;
+}
+
+.card-subtitle {
+  margin-top: 11px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #000000;
+}
+
+.card-text {
+  display: block;
+  margin-top: 15px;
+  max-width: 130px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.1;
+  color: #666666;
+}
+
+.card-cat {
+  top: 225px;
+  left: -35px;
+  width: 370px;
+  height: 361px;
+  height: auto;
+  position: absolute;
+  pointer-events: none;
+}
+
+.card-ellipse {
+  position: absolute;
+  display: block;
+  pointer-events: none;
+  text-align: center;
+  padding: 10px;
+  bottom: 15px;
+  right: 15px;
+  font-size: 32px;
+  color: #fff;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color:  #1698d9;
+  transition: background-color 0.2s linear;
+}
+
+.card-ellipse p {
+  font-size: 16px;
+}
+
+.body__text {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 13px;
+  color: #fff;
+}
+
+.item__buy {
+  color: #107cb2;
+  border-bottom: 1px dashed;
+}
+
+.item__buy:hover {
+  color: #d91667;
+  cursor: pointer;
+}
+
+@media (max-width: 1200px) {
+  .title {
+    padding-top: 20px;
+  }
+
+  .body__item {
+    margin-left: 30px;
+  }
+}
+
+@media (max-width: 1080px) {
+  .list {
+    flex-wrap: wrap;
+  }
+
+  .body__item {
+    margin-bottom: 80px;
+  }
+}
+
+@media (max-width: 830px) {
+  .list {
+    padding: 25px 5px 65px;
+  }
+
+  .body__item {
+    margin-left: .5vw;
+    margin-right: .5vw;
+  }
+
 }

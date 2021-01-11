@@ -1,24 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import List from './List';
+import products from './products'
+import ProductContext from './ProductContext'
 
 function App() {
+  const [items, setProducts] = useState(products)
+  console.log(items);
+
+  function chooseItem(id) {
+    setProducts(products.map(p => {
+      if(p.id === id)
+        p.active = !p.active
+        p.hovered = true
+      return p
+    }))
+  }
+
+  function hoverOff(id) {
+    setProducts(products.map(p => {
+      if(p.id === id)
+        p.hovered = false
+      return p
+    }))
+  }
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    // eslint-disable-next-line
+    <ProductContext.Provider value={{items, chooseItem, hoverOff}}>
+      <div className="body-inner">
+        <div>
+          <div className="title">Ты сегодня покормил кота?</div>
+          <List />
+        </div>
+        
+      </div>
+    </ProductContext.Provider>
   );
 }
 
