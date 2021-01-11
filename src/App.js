@@ -8,7 +8,7 @@ function App() {
   console.log(items);
 
   function chooseItem(id) {
-    setProducts(products.map(p => {
+    setProducts(items.map(p => {
       if(p.id === id)
         p.active = !p.active
         p.hovered = true
@@ -17,7 +17,7 @@ function App() {
   }
 
   function hoverOff(id) {
-    setProducts(products.map(p => {
+    setProducts(items.map(p => {
       if(p.id === id)
         p.hovered = false
       return p
